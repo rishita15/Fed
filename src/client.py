@@ -26,7 +26,7 @@ class Client(object):
         """Client object is initiated by the center server."""
         self.id = client_id
         self.data = local_data
-        self.device = "cpu"
+        self.device = "cuda"
         self.__model = None
 
     @property
