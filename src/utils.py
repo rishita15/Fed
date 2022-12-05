@@ -166,8 +166,8 @@ def create_datasets(data_path, dataset_name, num_clients, num_shards, iid):
     for i in df['REPORT_ID'].unique():
         #print(df[selected_cols].columns)
         local_datasets.append(CustomTensorDataset(
-          torch.tensor(df[df['REPORT_ID']==i][selected_cols].head(1).values.astype(np.float32)),
-          torch.tensor(df[df['REPORT_ID']==i]['avgSpeed'].head(1).values.astype(np.float32))))
+          torch.tensor(df[df['REPORT_ID']==i][selected_cols].values.astype(np.float32)),
+          torch.tensor(df[df['REPORT_ID']==i]['avgSpeed'].values.astype(np.float32))))
 
     df_test = pd.read_csv("/content/gdrive/MyDrive/Combine_test.csv")
     test_dataset = CustomTensorDataset(
