@@ -154,7 +154,7 @@ class CustomTensorDataset(Dataset):
         return self.tensors_x.size(0)
 
 def create_datasets(data_path, dataset_name, num_clients, num_shards, iid):
-    df = pd.read_csv("/Users/rishitas/Downloads/MTECHProject/Combine_train.csv")
+    df = pd.read_csv("/content/gdrive/MyDrive/Combine_train.csv")
     selected_cols = ['avgMeasuredTime', 'extID', 'medianMeasuredTime', 'vehicleCount',
                      '_id', 'month', 'day',
             'year', 'hour', 'minute', 'day_sin', 'day_cos', 'hour_sin', 'hour_cos',
@@ -169,7 +169,7 @@ def create_datasets(data_path, dataset_name, num_clients, num_shards, iid):
           torch.tensor(df[df['REPORT_ID']==i][selected_cols].head(1).values.astype(np.float32)),
           torch.tensor(df[df['REPORT_ID']==i]['avgSpeed'].head(1).values.astype(np.float32))))
 
-    df_test = pd.read_csv("/Users/rishitas/Downloads/MTECHProject/Combine_test.csv")
+    df_test = pd.read_csv("/content/gdrive/MyDrive/Combine_test.csv")
     test_dataset = CustomTensorDataset(
           torch.tensor(df[selected_cols].values.astype(np.float32)),
           torch.tensor(df['avgSpeed'].values.astype(np.float32)))
