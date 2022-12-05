@@ -1,6 +1,6 @@
 global_config:
   seed: 5959
-  device: "cpu"
+  device: "cuda"
   is_mp: True
 ---
 data_config:
